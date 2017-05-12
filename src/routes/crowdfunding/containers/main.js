@@ -26,8 +26,8 @@ function mapStateToProps(state) {
   return {
     ...state.crowdfunding,
     numBlock: state.app.numBlock,
-    totalFundedEth: Number(hett.web3.fromWei(state.crowdfunding.totalFundedEth, 'ether')),
-    minValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.minValueEth, 'ether')),
+    totalFundedEth: Number(hett.web3.fromWei(state.crowdfunding.totalFunded, 'ether')),
+    minValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.minValue, 'ether')),
     maxValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.maxValue, 'ether'))
   }
 }
