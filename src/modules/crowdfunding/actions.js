@@ -8,6 +8,7 @@ export function loadModule(address) {
     dispatch({
       type: START_LOAD
     })
+    let payload;
     hett.getContractByName('Crowdfunding', address)
       .then(contract => (
         Promise.join(
@@ -39,9 +40,17 @@ export function loadModule(address) {
         )
       ))
       .then((info) => {
+        payload = info
+        return hett.getContractByName('TokenEmission', info.bounty)
+      })
+      .then(contract => contract.call('balanceOf', [hett.web3h.coinbase()]))
+      .then((balance) => {
         dispatch({
           type: LOAD_MODULE,
-          payload: info
+          payload: {
+            ...payload,
+            balanceAir: Number(balance)
+          }
         })
         hett.watcher.addAddress(address, 'loadModule', () => {
           dispatch(loadModule(address));

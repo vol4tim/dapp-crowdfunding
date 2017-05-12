@@ -3,6 +3,7 @@ import { CROWDFUNDING_ADDR } from '../../config/config'
 
 const initialState = {
   balanceEth: 0,
+  balanceAir: 0,
   address: CROWDFUNDING_ADDR,
   isLoad: false,
   fund: '',

@@ -6,7 +6,14 @@ const Main = props => (
   (<div>
     <h1>address: {props.address}</h1>
     <hr />
-    <AddBalance />
+    <div className="row">
+      <div className="col-md-6">
+        <AddBalance />
+      </div>
+      <div className="col-md-6 text-center">
+        Your Air balance: <b>{props.balanceAir} AIR</b>
+      </div>
+    </div>
     <hr />
     <h2>Time</h2>
     <p>current block: {props.numBlock}</p>
