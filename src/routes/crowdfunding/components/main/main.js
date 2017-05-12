@@ -39,7 +39,7 @@ const Main = props => (
     <h2>Balance</h2>
     <div className="row">
       <div className="col-md-2">
-        Min {props.config.minValue}
+        Min {props.minValueEth} ETH
       </div>
       <div className="col-md-8">
         {props.totalFunded >= props.config.minValue ?
@@ -51,6 +51,8 @@ const Main = props => (
                 )
               }
             />
+            {props.totalFundedEth} ETH =
+            &nbsp;
             {Math.ceil((props.totalFunded * 100) / (props.config.maxValue - props.config.minValue))}
             %
           </div>
@@ -59,12 +61,12 @@ const Main = props => (
             <Progress
               completed="0"
             />
-            {props.totalFunded} = 0%
+            {props.totalFundedEth} ETH = 0%
           </div>
         }
       </div>
       <div className="col-md-2">
-        Max {props.config.maxValue}
+        Max {props.maxValueEth} ETH
       </div>
     </div>
   </div>)

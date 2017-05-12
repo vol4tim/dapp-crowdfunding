@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadModule } from '../../../modules/crowdfunding/actions';
 import { Main } from '../components/main';
+import hett from '../../../utils/hett'
 
 class Container extends Component {
   componentWillMount() {
@@ -24,7 +25,10 @@ class Container extends Component {
 function mapStateToProps(state) {
   return {
     ...state.crowdfunding,
-    numBlock: state.app.numBlock
+    numBlock: state.app.numBlock,
+    totalFundedEth: Number(hett.web3.fromWei(state.crowdfunding.totalFundedEth, 'ether')),
+    minValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.minValueEth, 'ether')),
+    maxValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.maxValue, 'ether'))
   }
 }
 function mapDispatchToProps(dispatch) {
