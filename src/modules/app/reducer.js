@@ -1,7 +1,7 @@
 import { SET_DAO_ADDRESS, SET_NUM_BLOCK, FLASH_MESSAGE } from './actionTypes'
 
 const initialState = {
-  title: 'dApp',
+  title: 'dApp Aira',
   flash_message: '',
   numBlock: 0,
 }

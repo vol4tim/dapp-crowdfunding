@@ -13,7 +13,7 @@ const EthLink = (props) => {
   if (!_.isEmpty(props.type)) {
     type = props.type
   }
-  return <a href={'https://kovan.etherscan.io/' + type + '/' + props.address} target="_blank">{label}</a>
+  return <a href={'https://etherscan.io/' + type + '/' + props.address} target="_blank">{label}</a>
 }
 
 export default EthLink

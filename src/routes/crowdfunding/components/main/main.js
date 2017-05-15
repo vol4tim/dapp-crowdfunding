@@ -1,16 +1,61 @@
 import React from 'react'
 import Progress from './progress'
 import AddBalance from '../../containers/addBalance'
+import EthLink from '../../../../shared/components/common/ethLink'
 
 const Main = props => (
   (<div>
-    <h1>address: {props.address}</h1>
+    <h1>Token distribution phase 1</h1>
+    <h2><EthLink address={props.address} /></h2>
+    <div className="row">
+      <div className="col-md-6">
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Limit of collect ether:</td>
+              <td>5,000 eth</td>
+            </tr>
+            <tr>
+              <td>Max supply:</td>
+              <td>1,000,000.00 air</td>
+            </tr>
+            <tr>
+              <td>Cybernator total invested:</td>
+              <td>2,000 eth</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="col-md-6">
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Foundation</td>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <td>Founders</td>
+              <td>10%</td>
+            </tr>
+            <tr>
+              <td>Price per one token</td>
+              <td>$0.60</td>
+            </tr>
+            <tr>
+              <td>Cap in USD</td>
+              <td>$600,000.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <hr />
     <div className="row">
       <div className="col-md-6">
         <AddBalance />
       </div>
       <div className="col-md-6 text-center">
+        Token Air <EthLink address={props.address} /><br />
         Your Air balance: <b>{props.balanceAir} AIR</b>
       </div>
     </div>

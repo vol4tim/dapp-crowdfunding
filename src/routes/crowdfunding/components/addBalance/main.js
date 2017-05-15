@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import EthLink from '../../../../shared/components/common/ethLink'
 
 class Main extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Main extends Component {
   render() {
     return (
       <div>
+        <p>Your account: <EthLink address={this.props.account} /></p>
         <p>Your Ether balance: <b>{this.props.balance} ETH</b></p>
         <form className="form-inline" onSubmit={this.handleSubmit}>
           <div className="form-group">
