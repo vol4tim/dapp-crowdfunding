@@ -24,15 +24,8 @@ const Main = props => (
       <div className="col-md-8">
         {props.config.startBlock <= props.numBlock ?
           <div>
-            <Progress
-              completed={
-                Math.ceil(
-                  (props.numBlock * 100) / (props.config.stopBlock - props.config.startBlock)
-                )
-              }
-            />
-            {Math.ceil((props.numBlock * 100) / (props.config.stopBlock - props.config.startBlock))}
-            %
+            <Progress completed={(props.timePercent < 100) ? props.timePercent : 100} />
+            {props.timePercent}%
           </div>
           :
           <p>начало через {props.config.startBlock - props.numBlock} блока</p>
@@ -51,17 +44,8 @@ const Main = props => (
       <div className="col-md-8">
         {props.totalFunded >= props.config.minValue ?
           <div>
-            <Progress
-              completed={
-                Math.ceil(
-                  (props.totalFunded * 100) / (props.config.maxValue - props.config.minValue)
-                )
-              }
-            />
-            {props.totalFundedEth} ETH =
-            &nbsp;
-            {Math.ceil((props.totalFunded * 100) / (props.config.maxValue - props.config.minValue))}
-            %
+            <Progress completed={(props.balancePercent < 100) ? props.balancePercent : 100} />
+            {props.totalFundedEth} ETH = {props.balancePercent}%
           </div>
           :
           <div>

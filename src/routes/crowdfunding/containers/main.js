@@ -23,12 +23,24 @@ class Container extends Component {
 }
 
 function mapStateToProps(state) {
+  const timePercent = Math.ceil(
+    (100 *
+    (state.app.numBlock - state.crowdfunding.config.startBlock)) /
+    (state.crowdfunding.config.stopBlock - state.crowdfunding.config.startBlock)
+  )
+  const balancePercent = Math.ceil(
+    (100 *
+    (state.crowdfunding.totalFunded - state.crowdfunding.config.minValue)) /
+    (state.crowdfunding.config.maxValue - state.crowdfunding.config.minValue)
+  )
   return {
     ...state.crowdfunding,
     numBlock: state.app.numBlock,
     totalFundedEth: Number(hett.web3.fromWei(state.crowdfunding.totalFunded, 'ether')),
     minValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.minValue, 'ether')),
-    maxValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.maxValue, 'ether'))
+    maxValueEth: Number(hett.web3.fromWei(state.crowdfunding.config.maxValue, 'ether')),
+    timePercent,
+    balancePercent
   }
 }
 function mapDispatchToProps(dispatch) {
