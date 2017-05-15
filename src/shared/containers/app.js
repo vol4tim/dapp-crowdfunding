@@ -12,7 +12,6 @@ import './style.css'
 class App extends Component {
   componentWillMount() {
     this.props.upBlock();
-    setInterval(this.props.upBlock, 3000);
   }
 
   render() {

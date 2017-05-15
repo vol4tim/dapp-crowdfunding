@@ -4,6 +4,12 @@ import hett from '../../utils/hett'
 
 export function upBlock() {
   return (dispatch) => {
+    hett.watcher.addSubscribe((info) => {
+      dispatch({
+        type: SET_NUM_BLOCK,
+        payload: info.number
+      })
+    });
     hett.web3.eth.getBlockNumber((error, result) => {
       dispatch({
         type: SET_NUM_BLOCK,
