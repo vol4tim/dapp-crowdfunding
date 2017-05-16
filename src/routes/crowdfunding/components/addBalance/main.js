@@ -1,23 +1,58 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 import EthLink from '../../../../shared/components/common/ethLink'
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 1
+      value: 1,
+      error: '',
+      air: 1 * props.price
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  validate() {
+    this.setState({ error: '' });
+    const value = Number(this.state.value)
+    const balance = Number(this.props.balance)
+    if (value > 0 && balance >= value && (value * this.props.price) <= this.props.totalSupply) {
+      return true;
+    }
+    let error;
+    if (this.state.value === '') {
+      error = 'Не указана сумма'
+    } else if (value <= 0) {
+      error = 'Сумма указана некорректно'
+    } else if (balance < value) {
+      error = 'Недостаточно средств на счете'
+    } else if ((value * this.props.price) > this.props.totalSupply) {
+      error = 'Указана большая сумма'
+    }
+    this.setState({ error });
+    return false;
+  }
+
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ error: '' });
+    this.setState({ air: 0 });
+    let value = event.target.value;
+    if (event.target.name === 'value' && event.target.value !== '') {
+      if (!_.isNaN(Number(event.target.value))) {
+        value = Number(event.target.value);
+        this.setState({ air: value * this.props.price });
+      }
+    }
+    this.setState({ [event.target.name]: value });
   }
 
   handleSubmit(event) {
-    this.props.onSubmit(this.props.address, this.state);
+    if (this.validate()) {
+      this.props.onSubmit(this.props.address, this.state);
+    }
     event.preventDefault();
   }
 
@@ -35,12 +70,12 @@ class Main extends Component {
             </div>
           </div>
           &nbsp;
-          {this.props.balance >= Number(this.state.value) ?
-            <button type="submit" className="btn btn-default">Supply</button>
-            :
-            <button type="submit" className="btn btn-default" disabled>Supply</button>
-          }
+          <button type="submit" className="btn btn-default" disabled={this.state.error !== ''}>Supply</button>
         </form>
+        {this.state.error !== '' &&
+          <div className="alert alert-danger">{this.state.error}</div>
+        }
+        <p>You will receive: <b>{this.state.air} AIR</b></p>
       </div>
     );
   }

@@ -43,19 +43,43 @@ export function loadModule(address) {
         payload = info
         return hett.getContractByName('TokenEmission', info.bounty)
       })
-      .then(contract => contract.call('balanceOf', [hett.web3h.coinbase()]))
-      .then((balance) => {
+      .then(contract => (
+        Promise.join(
+          contract.call('balanceOf', [hett.web3h.coinbase()]),
+          contract.call('totalSupply'),
+          (balance, totalSupply) => (
+            {
+              balanceAir: Number(balance),
+              totalSupply: Number(totalSupply)
+            }
+          )
+        )
+      ))
+      .then((token) => {
         dispatch({
           type: LOAD_MODULE,
           payload: {
             ...payload,
-            balanceAir: Number(balance)
+            ...token
           }
         })
         hett.watcher.addAddress(address, 'loadModule', () => {
           dispatch(loadModule(address));
         })
       })
+      // .then(contract => contract.call('balanceOf', [hett.web3h.coinbase()]))
+      // .then((balance) => {
+      //   dispatch({
+      //     type: LOAD_MODULE,
+      //     payload: {
+      //       ...payload,
+      //       balanceAir: Number(balance)
+      //     }
+      //   })
+      //   hett.watcher.addAddress(address, 'loadModule', () => {
+      //     dispatch(loadModule(address));
+      //   })
+      // })
   }
 }
 

@@ -13,7 +13,7 @@ const Main = props => (
           <tbody>
             <tr>
               <td>Limit of collect ether:</td>
-              <td>5,000 eth</td>
+              <td>10,000 eth</td>
             </tr>
             <tr>
               <td>Max supply:</td>
@@ -31,19 +31,15 @@ const Main = props => (
           <tbody>
             <tr>
               <td>Foundation</td>
-              <td>15%</td>
-            </tr>
-            <tr>
-              <td>Founders</td>
               <td>10%</td>
             </tr>
             <tr>
-              <td>Price per one token</td>
-              <td>$0.60</td>
+              <td>Founders</td>
+              <td>15%</td>
             </tr>
             <tr>
-              <td>Cap in USD</td>
-              <td>$600,000.00</td>
+              <td>Aira network token price phase 1 (eth / air)</td>
+              <td>75 air</td>
             </tr>
           </tbody>
         </table>
@@ -54,9 +50,10 @@ const Main = props => (
       <div className="col-md-6">
         <AddBalance />
       </div>
-      <div className="col-md-6 text-center">
-        Token Air <EthLink address={props.bounty} type="token" /><br />
-        Your Air balance: <b>{props.balanceAir} AIR</b>
+      <div className="col-md-6">
+        <p>Token Air <EthLink address={props.bounty} type="token" /></p>
+        <p>Token Total Supply: <b>{props.totalSupply} AIR</b></p>
+        <p>Your Air balance: <b>{props.balanceAir} AIR</b></p>
       </div>
     </div>
     <hr />
