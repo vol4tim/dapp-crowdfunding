@@ -16,7 +16,7 @@ const Main = props => (
               <td>10,000 eth</td>
             </tr>
             <tr>
-              <td>Max supply:</td>
+              <td>Air token max supply:</td>
               <td>1,000,000.00 air</td>
             </tr>
             <tr>
