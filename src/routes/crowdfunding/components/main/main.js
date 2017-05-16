@@ -55,7 +55,7 @@ const Main = props => (
         <AddBalance />
       </div>
       <div className="col-md-6 text-center">
-        Token Air <EthLink address={props.address} /><br />
+        Token Air <EthLink address={props.bounty} /><br />
         Your Air balance: <b>{props.balanceAir} AIR</b>
       </div>
     </div>
