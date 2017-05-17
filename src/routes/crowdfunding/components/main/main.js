@@ -66,7 +66,7 @@ const Main = props => (
       <div className="col-md-8">
         {props.config.startBlock <= props.numBlock ?
           <div>
-            <Progress completed={(props.timePercent < 100) ? props.timePercent : 100} />
+            <Progress completed={(props.timePercent <= 100) ? props.timePercent : 100} />
             {props.timePercent}%
           </div>
           :
@@ -86,8 +86,10 @@ const Main = props => (
       <div className="col-md-8">
         {props.totalFunded >= props.config.minValue ?
           <div>
-            <Progress completed={(props.balancePercent < 100) ? props.balancePercent : 100} />
-            {props.totalFundedEth} ETH = {props.balancePercent}%
+            <Progress completed={(props.balancePercent <= 100) ? props.balancePercent : 100} />
+            {props.totalFundedEth} ETH = {
+              (props.balancePercent <= 100) ? props.balancePercent : 100
+            }%
           </div>
           :
           <div>
