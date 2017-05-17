@@ -20,8 +20,8 @@ const Main = props => (
               <td>1,000,000.00 air</td>
             </tr>
             <tr>
-              <td>Cybernator total invested:</td>
-              <td>2,000 eth</td>
+              <td>Amount of tokens for one tx presale:</td>
+              <td>175,000 air</td>
             </tr>
           </tbody>
         </table>
