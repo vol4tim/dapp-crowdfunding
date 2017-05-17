@@ -19,18 +19,18 @@ class Main extends Component {
     this.setState({ error: '' });
     const value = Number(this.state.value)
     const balance = Number(this.props.balance)
-    if (value > 0 && balance >= value && value <= this.props.limitEth) {
+    if (value > 0 && balance >= value && value < this.props.limitEth) {
       return true;
     }
     let error;
     if (this.state.value === '') {
-      error = 'Не указана сумма'
+      error = 'Amount required'
     } else if (value <= 0) {
-      error = 'Сумма указана некорректно'
+      error = 'Amount is incorrect'
     } else if (balance < value) {
-      error = 'Недостаточно средств на счете'
-    } else if (value > this.props.limitEth) {
-      error = 'Указана большая сумма'
+      error = 'Not enough funds on account'
+    } else if (value >= this.props.limitEth) {
+      error = 'Specified a large amount'
     }
     this.setState({ error });
     return false;
@@ -61,21 +61,25 @@ class Main extends Component {
       <div>
         <p>Your account: <EthLink address={this.props.account} /></p>
         <p>Your Ether balance: <b>{this.props.balance} ETH</b></p>
-        <form className="form-inline" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label className="sr-only">Amount (in dollars)</label>
-            <div className="input-group">
-              <input value={this.state.value} onChange={this.handleChange} name="value" type="text" className="form-control form-control-b" />
-              <div className="input-group-addon">ETH</div>
-            </div>
+        {this.props.startBlock < this.props.numBlock &&
+          <div>
+            <form className="form-inline" onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label className="sr-only">Amount (in dollars)</label>
+                <div className="input-group">
+                  <input value={this.state.value} onChange={this.handleChange} name="value" type="text" className="form-control form-control-b" />
+                  <div className="input-group-addon">ETH</div>
+                </div>
+              </div>
+              &nbsp;
+              <button type="submit" className="btn btn-default" disabled={this.state.error !== ''}>Supply</button>
+            </form>
+            {this.state.error !== '' &&
+              <div className="alert alert-danger">{this.state.error}</div>
+            }
+            <p>You will receive: <b>{this.state.air} AIR</b></p>
           </div>
-          &nbsp;
-          <button type="submit" className="btn btn-default" disabled={this.state.error !== ''}>Supply</button>
-        </form>
-        {this.state.error !== '' &&
-          <div className="alert alert-danger">{this.state.error}</div>
         }
-        <p>You will receive: <b>{this.state.air} AIR</b></p>
       </div>
     );
   }

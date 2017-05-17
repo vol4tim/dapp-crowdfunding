@@ -26,7 +26,7 @@ export function setDaoAddress(address) {
   }
 }
 
-export function flashMessage(message) {
+export function flashMessage(message, type = 'info') {
   return (dispatch) => {
     const notificationOpts = {
       // title: 'Hey, it\'s good to see you!',
@@ -34,10 +34,10 @@ export function flashMessage(message) {
       position: 'tr',
       autoDismiss: 10
     };
-    dispatch(Notifications.info(notificationOpts))
-    // dispatch({
-    //   type: FLASH_MESSAGE,
-    //   payload: message
-    // })
+    if (type === 'error') {
+      dispatch(Notifications.error(notificationOpts))
+    } else {
+      dispatch(Notifications.info(notificationOpts))
+    }
   }
 }

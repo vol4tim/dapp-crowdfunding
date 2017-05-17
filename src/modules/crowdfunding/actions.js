@@ -95,6 +95,7 @@ export function addBalance(address, value) {
         return transaction;
       })
       .catch((e) => {
+        dispatch(flashMessage('Error transaction', 'error'))
         console.log(e);
         // dispatch(stopSubmit(formName))
         return Promise.reject();

@@ -25,7 +25,7 @@ class Container extends Component {
 function mapStateToProps(state) {
   const timePercent = Math.floor(
     (100 *
-    (state.app.numBlock - state.crowdfunding.config.startBlock)) /
+    ((state.app.numBlock - state.crowdfunding.config.startBlock) - 1)) /
     (state.crowdfunding.config.stopBlock - state.crowdfunding.config.startBlock)
   )
   const balancePercent = Math.floor(

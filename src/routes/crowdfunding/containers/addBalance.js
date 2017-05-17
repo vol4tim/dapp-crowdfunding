@@ -17,7 +17,9 @@ function mapStateToProps(state) {
     limitEth: Number(hett.web3.fromWei(
       state.crowdfunding.config.maxValue - state.crowdfunding.totalFunded, 'ether'
     )),
-    price
+    price,
+    numBlock: state.app.numBlock,
+    startBlock: state.crowdfunding.config.startBlock,
   }
 }
 function mapDispatchToProps(dispatch) {

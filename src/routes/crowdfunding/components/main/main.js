@@ -51,26 +51,26 @@ const Main = props => (
         <AddBalance />
       </div>
       <div className="col-md-6">
-        <p>Token Air <EthLink address={props.bounty} type="token" /></p>
+        <p>Token Air: <EthLink address={props.bounty} type="token" /></p>
         <p>Token Total Supply: <b>{props.totalSupply} AIR</b></p>
         <p>Your Air balance: <b>{props.balanceAir} AIR</b></p>
       </div>
     </div>
     <hr />
     <h2>Time</h2>
-    <p>current block: {props.numBlock}</p>
+    <p>Current block: {props.numBlock}</p>
     <div className="row">
       <div className="col-md-2">
         Start block {props.config.startBlock}
       </div>
       <div className="col-md-8">
-        {props.config.startBlock <= props.numBlock ?
+        {props.config.startBlock < props.numBlock ?
           <div>
             <Progress completed={(props.timePercent <= 100) ? props.timePercent : 100} />
             {(props.timePercent <= 100) ? props.timePercent : 100}%
           </div>
           :
-          <p>начало через {props.config.startBlock - props.numBlock} блока</p>
+          <p className="text-center text-warning"><b>Before the beginning there are {(props.config.startBlock - props.numBlock) + 1} blocks left</b></p>
         }
       </div>
       <div className="col-md-2">
