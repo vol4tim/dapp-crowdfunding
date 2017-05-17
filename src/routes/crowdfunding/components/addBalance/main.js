@@ -19,7 +19,7 @@ class Main extends Component {
     this.setState({ error: '' });
     const value = Number(this.state.value)
     const balance = Number(this.props.balance)
-    if (value > 0 && balance >= value && (value * this.props.price) <= this.props.totalSupply) {
+    if (value > 0 && balance >= value && value <= this.props.limitEth) {
       return true;
     }
     let error;
@@ -29,7 +29,7 @@ class Main extends Component {
       error = 'Сумма указана некорректно'
     } else if (balance < value) {
       error = 'Недостаточно средств на счете'
-    } else if ((value * this.props.price) > this.props.totalSupply) {
+    } else if (value > this.props.limitEth) {
       error = 'Указана большая сумма'
     }
     this.setState({ error });

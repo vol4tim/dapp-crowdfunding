@@ -14,7 +14,9 @@ function mapStateToProps(state) {
     account: hett.web3h.coinbase(),
     address: state.crowdfunding.address,
     balance: state.crowdfunding.balanceEth,
-    totalSupply: state.crowdfunding.totalSupply,
+    limitEth: Number(hett.web3.fromWei(
+      state.crowdfunding.config.maxValue - state.crowdfunding.totalFunded, 'ether'
+    )),
     price
   }
 }

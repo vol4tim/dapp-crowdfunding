@@ -23,12 +23,12 @@ class Container extends Component {
 }
 
 function mapStateToProps(state) {
-  const timePercent = Math.ceil(
+  const timePercent = Math.floor(
     (100 *
     (state.app.numBlock - state.crowdfunding.config.startBlock)) /
     (state.crowdfunding.config.stopBlock - state.crowdfunding.config.startBlock)
   )
-  const balancePercent = Math.ceil(
+  const balancePercent = Math.floor(
     (100 *
     (state.crowdfunding.totalFunded - state.crowdfunding.config.minValue)) /
     (state.crowdfunding.config.maxValue - state.crowdfunding.config.minValue)
