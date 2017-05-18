@@ -19,7 +19,7 @@ class Main extends Component {
     this.setState({ error: '' });
     const value = Number(this.state.value)
     const balance = Number(this.props.balance)
-    if (value > 0 && balance >= value && value < this.props.limitEth) {
+    if (value > 0 && balance >= value && value <= this.props.limitEth) {
       return true;
     }
     let error;
@@ -29,7 +29,7 @@ class Main extends Component {
       error = 'Amount is incorrect'
     } else if (balance < value) {
       error = 'Not enough funds on account'
-    } else if (value >= this.props.limitEth) {
+    } else if (value > this.props.limitEth) {
       error = 'Specified a large amount'
     }
     this.setState({ error });
@@ -61,7 +61,7 @@ class Main extends Component {
       <div>
         <p>Your account: <EthLink address={this.props.account} /></p>
         <p>Your Ether balance: <b>{this.props.balance} ETH</b></p>
-        {this.props.startBlock < this.props.numBlock &&
+        {this.props.startBlock <= this.props.numBlock &&
           <div>
             <form className="form-inline" onSubmit={this.handleSubmit}>
               <div className="form-group">

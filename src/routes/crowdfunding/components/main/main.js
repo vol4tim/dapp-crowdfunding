@@ -64,13 +64,13 @@ const Main = props => (
         Start block {props.config.startBlock}
       </div>
       <div className="col-md-8">
-        {props.config.startBlock < props.numBlock ?
+        {props.config.startBlock <= props.numBlock ?
           <div>
             <Progress completed={(props.timePercent <= 100) ? props.timePercent : 100} />
             {(props.timePercent <= 100) ? props.timePercent : 100}%
           </div>
           :
-          <p className="text-center text-warning"><b>Before the beginning there are {(props.config.startBlock - props.numBlock) + 1} blocks left</b></p>
+          <p className="text-center text-warning"><b>Before the beginning there are {props.config.startBlock - props.numBlock} blocks left</b></p>
         }
       </div>
       <div className="col-md-2">
