@@ -7,7 +7,9 @@ import hett from '../../../utils/hett'
 
 class Container extends Component {
   componentWillMount() {
-    this.props.loadModule(this.props.address);
+    setTimeout(() => {
+      this.props.loadModule(this.props.address);
+    }, 1000)
   }
   render() {
     let element;
