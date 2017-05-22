@@ -67,19 +67,6 @@ export function loadModule(address) {
           dispatch(loadModule(address));
         })
       })
-      // .then(contract => contract.call('balanceOf', [hett.web3h.coinbase()]))
-      // .then((balance) => {
-      //   dispatch({
-      //     type: LOAD_MODULE,
-      //     payload: {
-      //       ...payload,
-      //       balanceAir: Number(balance)
-      //     }
-      //   })
-      //   hett.watcher.addAddress(address, 'loadModule', () => {
-      //     dispatch(loadModule(address));
-      //   })
-      // })
   }
 }
 

@@ -2,16 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Notifications from 'react-notification-system-redux';
-import { upBlock } from '../../modules/app/actions';
+import { upBlock, syncStatus } from '../../modules/app/actions';
 
 import Header from '../components/app/header'
 import Footer from '../components/app/footer'
+import Sync from '../components/app/sync'
 
 import './style.css'
 
 class App extends Component {
   componentWillMount() {
     this.props.upBlock();
+    this.props.syncStatus();
   }
 
   render() {
@@ -29,9 +31,10 @@ class App extends Component {
     };
     return (<div>
       <Header title={this.props.title} />
-      <div className="container" id="maincontainer">
+      <div>
         {this.props.children}
       </div>
+      <Sync status={this.props.status} />
       <Footer />
       <Notifications
         notifications={this.props.notifications}
@@ -46,15 +49,18 @@ function mapStateToProps(state) {
   return {
     title: state.app.title,
     flash_message: state.app.flash_message,
-    notifications: state.notifications
+    notifications: state.notifications,
+    status: state.app.syncStatus
   }
 }
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators({
-    upBlock
+    upBlock,
+    syncStatus
   }, dispatch)
   return {
-    upBlock: actions.upBlock
+    upBlock: actions.upBlock,
+    syncStatus: actions.syncStatus
   }
 }
 

@@ -2,6 +2,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Plugin from './shared/components/app/plugin'
+import NotAccounts from './shared/components/app/notAccounts'
 
 const startApp = () => {
   require('./app');
@@ -16,9 +17,7 @@ const notWeb3 = () => {
 }
 const notAccounts = () => {
   render(
-    <div className="container" id="maincontainer">
-      <p>not accounts</p>
-    </div>,
+    <NotAccounts />,
     document.getElementById('root')
   )
 }

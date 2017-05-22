@@ -58,28 +58,45 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
-        <p>Your account: <EthLink address={this.props.account} /></p>
-        <p>Your Ether balance: <b>{this.props.balance} ETH</b></p>
-        {this.props.startBlock <= this.props.numBlock &&
-          <div>
-            <form className="form-inline" onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label className="sr-only">Amount (in dollars)</label>
-                <div className="input-group">
-                  <input value={this.state.value} onChange={this.handleChange} name="value" type="text" className="form-control form-control-b" />
-                  <div className="input-group-addon">ETH</div>
+      <div className="container m-b-sec">
+        <div className="row">
+          <div className="col-md-3" />
+          <div className="col-md-6 box">
+            <h2>Buy AIR tokens</h2>
+            {this.props.startBlock <= this.props.numBlock &&
+              <form className="t-center" onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label className="control-label">Your account: </label>
+                  <p>
+                    <EthLink address={this.props.account} style={{ textDecoration: 'underline' }} />
+                    <span className="m-l-10 d-b">{this.props.balance} ETC , {this.props.balanceAir} AIR</span>
+                  </p>
                 </div>
-              </div>
-              &nbsp;
-              <button type="submit" className="btn btn-default" disabled={this.state.error !== ''}>Supply</button>
-            </form>
-            {this.state.error !== '' &&
-              <div className="alert alert-danger">{this.state.error}</div>
+                <div className="form-group">
+                  <label className="control-label">Enter the amont of ETH that you would like to buy with:</label>
+                  <div className="input-group">
+                    <input value={this.state.value} onChange={this.handleChange} name="value" type="text" className="form-control" style={{ width: 100 }} />
+                    <span className="input-group-addon">ETH </span>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label className="control-label">You will receive: </label>
+                  <p className="t-big">{this.state.air} AIR</p>
+                </div>
+                <label className="control-label">By buying AIR tokens, you agree to <a href="/#" target="_blank">TERMS OF USE</a></label>
+                <div className="t-center">
+                  <button className="btn btn-primary" type="submit" disabled={this.state.error !== ''}>Buy tokens</button>
+                </div>
+              </form>
             }
-            <p>You will receive: <b>{this.state.air} AIR</b></p>
+            {this.state.error !== '' &&
+              <div className="alert alert-danger text-center" role="alert">
+                <span>{this.state.error}</span>
+              </div>
+            }
           </div>
-        }
+          <div className="col-md-3" />
+        </div>
       </div>
     );
   }

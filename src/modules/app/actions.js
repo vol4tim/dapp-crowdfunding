@@ -1,5 +1,5 @@
 import Notifications from 'react-notification-system-redux';
-import { SET_DAO_ADDRESS, SET_NUM_BLOCK/* , FLASH_MESSAGE*/ } from './actionTypes'
+import { SET_DAO_ADDRESS, SET_NUM_BLOCK, SET_SYNC_STATUS/* , FLASH_MESSAGE*/ } from './actionTypes'
 import hett from '../../utils/hett'
 
 export function upBlock() {
@@ -16,6 +16,26 @@ export function upBlock() {
         payload: result
       })
     });
+  }
+}
+
+export function syncStatus() {
+  return (dispatch) => {
+    setInterval(() => {
+      hett.web3.eth.getSyncing((error, result) => {
+        if (result !== false) {
+          dispatch({
+            type: SET_SYNC_STATUS,
+            payload: result
+          })
+        } else {
+          dispatch({
+            type: SET_SYNC_STATUS,
+            payload: false
+          })
+        }
+      })
+    }, 10000);
   }
 }
 
