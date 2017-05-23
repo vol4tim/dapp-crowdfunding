@@ -3,6 +3,9 @@ import React from 'react'
 import { render } from 'react-dom'
 import Plugin from './shared/components/app/plugin'
 import NotAccounts from './shared/components/app/notAccounts'
+import Header from './shared/components/app/header'
+import Footer from './shared/components/app/footer'
+import Loader from './shared/components/app/loader'
 
 const startApp = () => {
   require('./app');
@@ -17,14 +20,21 @@ const notWeb3 = () => {
 }
 const notAccounts = () => {
   render(
-    <NotAccounts />,
+    <div>
+      <Header title="dApp Aira" />
+      <NotAccounts />
+      <div className="statusbar"><span>Cant syncing, check your account</span></div>
+      <Footer />
+    </div>,
     document.getElementById('root')
   )
 }
 const loader = () => {
   render(
-    <div className="container" id="maincontainer">
-      <p>...</p>
+    <div>
+      <Header title="dApp Aira" />
+      <Loader />
+      <Footer />
     </div>,
     document.getElementById('root')
   )
