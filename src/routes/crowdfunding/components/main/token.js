@@ -13,7 +13,7 @@ const Main = props => (
               <tbody>
                 <tr>
                   <td>ICO contract</td>
-                  <td><EthLink address={props.address} /></td>
+                  <td><EthLink address={props.ico} /></td>
                 </tr>
                 <tr>
                   <td>AIR token address </td>
