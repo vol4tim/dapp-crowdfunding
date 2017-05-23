@@ -1,30 +1,7 @@
 import React from 'react'
 
-const notAccounts = function notAccounts() {
-  return (<div>
-    <header className="header-blue header-cols m-b-sec">
-      <div className="header-blue-title">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3 col-sm-3 header-col-first">
-              <h2 className="logo-icon-text logo-big">
-                <img src="assets/img/aira-logo-w.svg" role="presentation" />
-                <span>dApp AIRA</span>
-              </h2>
-            </div>
-            <div className="col-md-6 col-sm-6">
-              <h2>AIR token distribution phase 1</h2>
-            </div>
-            <div className="col-md-3 col-sm-3 header-col-last">
-              <h2>1 ETH = 150 AIR</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="header-blue-content">
-        <div className="container" />
-      </div>
-    </header>
+export default function notAccounts() {
+  return (
     <div className="container m-b-sec">
       <div className="row">
         <div className="col-md-3" />
@@ -62,11 +39,5 @@ const notAccounts = function notAccounts() {
         <div className="col-md-3" />
       </div>
     </div>
-    <div className="statusbar"><span>Cant syncing, check your account</span></div>
-    <footer className="footer">
-      <div className="t-center"><a href="mailto:help@aira.life" className="t-mid">help@aira.life </a></div>
-    </footer>
-  </div>)
+  )
 }
-
-export default notAccounts

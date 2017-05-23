@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Plugin = function Plugin() {
+export default function Plugin() {
   return (
     <div>
       <h1>Please, setup one of the suggested plugins for working with dApp</h1>
@@ -41,5 +41,3 @@ const Plugin = function Plugin() {
     </div>
   )
 }
-
-export default Plugin

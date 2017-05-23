@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadModule } from '../../../modules/crowdfunding/actions';
 import { Main } from '../components/main';
+import Loader from '../../../shared/components/app/loader';
 import hett from '../../../utils/hett'
 
 class Container extends Component {
@@ -16,7 +17,7 @@ class Container extends Component {
     if (!this.props.isLoad) {
       element = <Main {...this.props} />
     } else {
-      element = <p>...</p>
+      element = <Loader />
     }
     return (<div>
       {element}
