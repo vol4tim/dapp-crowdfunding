@@ -12,7 +12,7 @@ const Main = () => (
               <tbody>
                 <tr>
                   <td>Ether collection limit </td>
-                  <td>10 000 ETH</td>
+                  <td>5 000 ETH</td>
                 </tr>
                 <tr>
                   <td>Air token max supply </td>
@@ -20,7 +20,7 @@ const Main = () => (
                 </tr>
                 <tr>
                   <td>Amount of tokens for one tx presale </td>
-                  <td>175 000 AIR</td>
+                  <td>180 000 AIR</td>
                 </tr>
                 <tr>
                   <td>Foundation </td>
