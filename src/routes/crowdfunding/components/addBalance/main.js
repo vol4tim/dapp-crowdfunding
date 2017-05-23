@@ -69,7 +69,7 @@ class Main extends Component {
                   <label className="control-label">Your account: </label>
                   <p>
                     <EthLink address={this.props.account} style={{ textDecoration: 'underline' }} />
-                    <span className="m-l-10 d-b">{this.props.balance} ETH , {this.props.balanceAir} AIR</span>
+                    <span className="m-l-10 d-b">{(this.props.balance < 0.001) ? this.props.balance : this.props.balance.toFixed(3)} ETH , {this.props.balanceAir} AIR</span>
                   </p>
                 </div>
                 <div className="form-group">
